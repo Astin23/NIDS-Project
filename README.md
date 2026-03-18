@@ -1,4 +1,4 @@
-# 🛡️ NIDS-Project
+#  NIDS-Project
 
 ## Hybrid AI-Enhanced Network Intrusion Detection System
 
@@ -15,7 +15,7 @@ This hybrid approach allows the system to detect both **known attacks** and **un
 
 ---
 
-## 🚀 Features
+##  Features
 
 *  Real-time packet capture using **Scapy**
 *  Machine Learning-based anomaly detection (Isolation Forest)
