@@ -62,7 +62,7 @@ The system follows a layered architecture:
 
    * Dashboard for monitoring
 
-
+---
 ##  Tech Stack
 
 | Technology            | Purpose          |
@@ -74,7 +74,8 @@ The system follows a layered architecture:
 | SQLite                | Logging database |
 | Matplotlib / Chart.js | Visualization    |
 
-
+---
+---
 
 ##  Project Structure
 
@@ -97,7 +98,7 @@ NIDS_Project/
 ├── logs/
 └── static/
 
-
+---
 ##  Installation
 
 ### 1️ Clone the Repository
