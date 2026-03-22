@@ -2,36 +2,36 @@
 
 ## Hybrid AI-Enhanced Network Intrusion Detection System
 
-
+---
 
 ##  Overview
 
 The **Hybrid AI-Enhanced Network Intrusion Detection System (NIDS)** is a cybersecurity project designed to monitor network traffic in real time and detect malicious activities using a combination of:
 
-*  Rule-Based Detection (Signature Matching)
-*  AI-Based Anomaly Detection (Machine Learning)
+* 🔹 Rule-Based Detection (Signature Matching)
+* 🔹 AI-Based Anomaly Detection (Machine Learning)
 
 This hybrid approach allows the system to detect both **known attacks** and **unknown (zero-day) threats**, making it more effective than traditional IDS systems.
 
-
+---
 
 ##  Features
 
-*  Real-time packet capture using **Scapy**
-*  Machine Learning-based anomaly detection (Isolation Forest)
-*  Rule-based detection for common attacks:
+* 📡 Real-time packet capture using **Scapy**
+* 🧠 Machine Learning-based anomaly detection (Isolation Forest)
+* 📜 Rule-based detection for common attacks:
 
   * Port Scanning
   * Brute Force Login
   * Suspicious Port Access
   * ICMP Flood
   * DDoS Behavior
-*  Real-time alert generation with severity levels
-*  Logging system using **SQLite / CSV**
-*  Web dashboard using **Flask + Chart.js**
-*  Visualization of network activity and attack patterns
+* ⚠️ Real-time alert generation with severity levels
+* 🗄️ Logging system using **SQLite / CSV**
+* 🌐 Web dashboard using **Flask + Chart.js**
+* 📊 Visualization of network activity and attack patterns
 
-
+---
 
 ##  System Architecture
 
@@ -63,6 +63,7 @@ The system follows a layered architecture:
    * Dashboard for monitoring
 
 ---
+
 ##  Tech Stack
 
 | Technology            | Purpose          |
@@ -75,11 +76,10 @@ The system follows a layered architecture:
 | Matplotlib / Chart.js | Visualization    |
 
 ---
----
 
 ##  Project Structure
 
-
+```
 NIDS_Project/
 │
 ├── main.py
@@ -97,8 +97,10 @@ NIDS_Project/
 ├── models/
 ├── logs/
 └── static/
+```
 
 ---
+
 ##  Installation
 
 ### 1️ Clone the Repository
@@ -121,6 +123,7 @@ venv\Scripts\activate   # Windows
 pip install -r requirements.txt
 ```
 
+---
 
 ##  Usage
 
@@ -136,6 +139,7 @@ python main.py --simulate --train
 python main.py
 ```
 
+---
 
 ##  Sample Output
 
@@ -145,7 +149,7 @@ Source IP: 192.168.1.5
 Severity: HIGH
 ```
 
-
+---
 
 ##  Future Enhancements
 
@@ -155,13 +159,19 @@ Severity: HIGH
 * Distributed IDS architecture
 * Threat intelligence integration
 
+---
 
+##  Author
 
+**Aayushman Bhadauria**
+B.Tech CSE (Cybersecurity)
+UPES Dehradun
+
+---
 
 ##  License
 
 This project is for educational and research purposes.
 
-
-
+---
  If you found this project useful, consider giving it a star!
