@@ -2,7 +2,7 @@
 
 ## Hybrid AI-Enhanced Network Intrusion Detection System
 
----
+
 
 ##  Overview
 
@@ -13,7 +13,7 @@ The **Hybrid AI-Enhanced Network Intrusion Detection System (NIDS)** is a cybers
 
 This hybrid approach allows the system to detect both **known attacks** and **unknown (zero-day) threats**, making it more effective than traditional IDS systems.
 
----
+
 
 ##  Features
 
@@ -31,7 +31,7 @@ This hybrid approach allows the system to detect both **known attacks** and **un
 *  Web dashboard using **Flask + Chart.js**
 *  Visualization of network activity and attack patterns
 
----
+
 
 ##  System Architecture
 
@@ -62,7 +62,6 @@ The system follows a layered architecture:
 
    * Dashboard for monitoring
 
----
 
 ##  Tech Stack
 
@@ -75,11 +74,11 @@ The system follows a layered architecture:
 | SQLite                | Logging database |
 | Matplotlib / Chart.js | Visualization    |
 
----
+
 
 ##  Project Structure
 
-```
+
 NIDS_Project/
 │
 ├── main.py
@@ -97,9 +96,7 @@ NIDS_Project/
 ├── models/
 ├── logs/
 └── static/
-```
 
----
 
 ##  Installation
 
@@ -123,7 +120,6 @@ venv\Scripts\activate   # Windows
 pip install -r requirements.txt
 ```
 
----
 
 ##  Usage
 
@@ -148,7 +144,7 @@ Source IP: 192.168.1.5
 Severity: HIGH
 ```
 
----
+
 
 ##  Future Enhancements
 
@@ -158,13 +154,13 @@ Severity: HIGH
 * Distributed IDS architecture
 * Threat intelligence integration
 
----
+
 
 
 ##  License
 
 This project is for educational and research purposes.
 
----
+
 
  If you found this project useful, consider giving it a star!
