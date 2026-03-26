@@ -8,8 +8,8 @@
 
 The **Hybrid AI-Enhanced Network Intrusion Detection System (NIDS)** is a cybersecurity project designed to monitor network traffic in real time and detect malicious activities using a combination of:
 
-* 🔹 Rule-Based Detection (Signature Matching)
-* 🔹 AI-Based Anomaly Detection (Machine Learning)
+*  Rule-Based Detection (Signature Matching)
+*  AI-Based Anomaly Detection (Machine Learning)
 
 This hybrid approach allows the system to detect both **known attacks** and **unknown (zero-day) threats**, making it more effective than traditional IDS systems.
 
@@ -17,19 +17,19 @@ This hybrid approach allows the system to detect both **known attacks** and **un
 
 ##  Features
 
-* 📡 Real-time packet capture using **Scapy**
-* 🧠 Machine Learning-based anomaly detection (Isolation Forest)
-* 📜 Rule-based detection for common attacks:
+*  Real-time packet capture using **Scapy**
+*  Machine Learning-based anomaly detection (Isolation Forest)
+*  Rule-based detection for common attacks:
 
   * Port Scanning
   * Brute Force Login
   * Suspicious Port Access
   * ICMP Flood
   * DDoS Behavior
-* ⚠️ Real-time alert generation with severity levels
-* 🗄️ Logging system using **SQLite / CSV**
-* 🌐 Web dashboard using **Flask + Chart.js**
-* 📊 Visualization of network activity and attack patterns
+*  Real-time alert generation with severity levels
+*  Logging system using **SQLite / CSV**
+*  Web dashboard using **Flask + Chart.js**
+*  Visualization of network activity and attack patterns
 
 ---
 
@@ -161,13 +161,7 @@ Severity: HIGH
 
 ---
 
-##  Author
 
-**Aayushman Bhadauria**
-B.Tech CSE (Cybersecurity)
-UPES Dehradun
-
----
 
 ##  License
 
