@@ -2,7 +2,6 @@
 ============================================================
   HYBRID AI-ENHANCED NETWORK INTRUSION DETECTION SYSTEM
   Mid-Semester Demo Script
-  demo_midsem.py
 
   Demonstrates:
     1. Packet Capture (Simulated)
