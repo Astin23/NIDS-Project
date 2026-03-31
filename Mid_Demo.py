@@ -13,8 +13,6 @@
        - Suspicious Port Access
     4. Alert System with Severity Levels
     5. Logging to SQLite Database
-
-  Run: python demo_midsem.py
   No root, no Scapy, no network required.
 ============================================================
 """
@@ -428,7 +426,7 @@ def main():
 
     print(f"\n{CYAN}{BOLD}")
     print("=" * 60)
-    print("   📊  DEMO SUMMARY")
+    print("  Mid DEMO SUMMARY ")
     print("=" * 60 + RESET)
     print(f"\n{WHITE}  Total Alerts Generated : {BOLD}{alert_count}{RESET}")
     print(f"{WHITE}  Saved to Database      : {BOLD}{total} records in logs/nids_demo.db{RESET}\n")
