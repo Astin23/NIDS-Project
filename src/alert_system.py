@@ -1,10 +1,9 @@
 """
-============================================================
   src/alert_system.py
   Module 5 — Alert System
   Dispatches alerts to console with colour-coded severity.
-  Extensible to email / Slack / SIEM webhooks.
-============================================================
+  Extensible to email / Slack / SIEM webhooks
+  
 """
 
 from datetime import datetime
