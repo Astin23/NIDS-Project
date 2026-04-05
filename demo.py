@@ -1,11 +1,9 @@
 """
-============================================================
   demo.py — NIDS Demo with Flask Dashboard
   Simulates packets continuously, detects attacks, and shows
   a live dashboard at http://127.0.0.1:5000
   Run: python demo.py
   No root, no Scapy, no live network needed!
-============================================================
 """
 
 import sys, os, time, random, threading, webbrowser
