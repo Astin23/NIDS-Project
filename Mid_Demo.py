@@ -1,7 +1,6 @@
 """
-============================================================
   HYBRID AI-ENHANCED NETWORK INTRUSION DETECTION SYSTEM
-  Mid-Semester Demo Script
+  Mid-Semester Demo Presenting
 
   Demonstrates:
     1. Packet Capture (Simulated)
@@ -14,7 +13,6 @@
     4. Alert System with Severity Levels
     5. Logging to SQLite Database
   No root, no Scapy, no network required.
-============================================================
 """
 
 import time
