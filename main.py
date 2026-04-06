@@ -1,11 +1,9 @@
 """
-============================================================
   Hybrid AI-Enhanced Network Intrusion Detection System
   main.py — Entry Point
-  Author  : B.Tech Cybersecurity Project
+  B.Tech Cybersecurity Project
   Purpose : Starts the packet capture, rule engine, ML
             anomaly detector, logger and dashboard together.
-============================================================
 """
  
 import threading
