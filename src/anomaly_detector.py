@@ -1,11 +1,9 @@
 """
-============================================================
   src/anomaly_detector.py
   Module 4 — AI Anomaly Detection
   Uses scikit-learn Isolation Forest (primary) with a
   One-Class SVM fallback to detect unknown attack patterns
   by learning the "shape" of normal traffic.
-============================================================
 """
 
 import os
