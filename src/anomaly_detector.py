@@ -1,8 +1,11 @@
 """
+============================================================
+  src/anomaly_detector.py
   Module 4 — AI Anomaly Detection
   Uses scikit-learn Isolation Forest (primary) with a
   One-Class SVM fallback to detect unknown attack patterns
   by learning the "shape" of normal traffic.
+============================================================
 """
 
 import os
@@ -159,11 +162,11 @@ class AnomalyDetector:
         for _ in range(n_samples):
             proto       = rng.choice([0, 1], p=[0.8, 0.2])   # TCP 80%, UDP 20%
             dst_port    = int(rng.choice([80, 443, 8080, 53], p=[0.4,0.4,0.1,0.1]))
-            pkt_size    = int(rng.normal(loc=500, scale=300).clip(64, 1500))
-            rate        = float(rng.exponential(scale=5).clip(0.1, 40))
+            pkt_size    = int(np.clip(rng.normal(loc=500, scale=300), 64, 1500))
+            rate        = float(np.clip(rng.exponential(scale=5), 0.1, 40))
             conn_att    = int(rng.integers(1, 5))
             icmp_cnt    = 0
-            avg_size    = float(rng.normal(loc=500, scale=100).clip(64, 1500))
+            avg_size    = float(np.clip(rng.normal(loc=500, scale=100), 64, 1500))
             syn         = int(rng.random() < 0.3)
             ack         = int(rng.random() < 0.6)
             fin         = int(rng.random() < 0.1)
