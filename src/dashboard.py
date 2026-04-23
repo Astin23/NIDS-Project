@@ -81,7 +81,7 @@ DASHBOARD_HTML = """
 <body>
 <header>
   <div class="status-dot"></div>
-  <h1>🛡️  Hybrid AI-Enhanced NIDS</h1>
+  <h1>  Hybrid AI-Enhanced NIDS</h1>
   <span id="last-update">Initialising …</span>
 </header>
  
