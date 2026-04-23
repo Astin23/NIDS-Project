@@ -424,7 +424,7 @@ def main():
         os.path.join(RESULTS_DIR, "per_attack_detection_rate.png")
     )
  
-    print(f"\n✅ All results saved to: {RESULTS_DIR}/")
+    print(f"\n All results saved to: {RESULTS_DIR}/")
     print("=" * 60)
     print("  Evaluation Complete!")
     print("=" * 60)
