@@ -1,13 +1,11 @@
 """
-============================================================
-  src/anomaly_detector_v2.py — Upgrade 3
+  src/anomaly_detector_v2.py — Upgrade 
   Enhanced Anomaly Detector with:
     1. CICIDS 2017 dataset support
     2. Feature importance analysis
     3. Adaptive threshold
     4. Better evaluation output
   Run standalone: python src/anomaly_detector_v2.py
-============================================================
 """
 
 import os
@@ -404,7 +402,7 @@ if __name__ == "__main__":
     print("\n[3/3] Saving feature importance chart …")
     detector.plot_feature_importance()
 
-    print(f"\n✅ Done! Results saved to: results/")
+    print(f"\n Done! Results saved to: results/")
     print("=" * 60)
     print("""
   CICIDS 2017 Usage:
