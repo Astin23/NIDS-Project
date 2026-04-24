@@ -1,6 +1,5 @@
 
 """
-============================================================
   run.py — MASTER RUNNER
   Hybrid AI-Enhanced NIDS — Complete Project
   Single command to run the ENTIRE project:
@@ -14,7 +13,6 @@
     python run.py --features → Feature importance analysis
     python run.py --live     → Full live system + dashboard
     python run.py --all      → Run EVERYTHING in sequence
-============================================================
 """
 
 import os
@@ -329,7 +327,7 @@ def main():
         elif choice == "6": run_live(args.port)
         elif choice == "7": run_all()
         elif choice == "0":
-            print(f"\n{C.GREEN}  Good luck for your viva bro! 🎓{C.RESET}\n"); break
+            print(f"\n{C.GREEN}  Thank you! 🎓{C.RESET}\n"); break
         else:
             warn("Enter 0-7")
         input(f"\n  {C.BOLD}Press Enter to return to menu …{C.RESET}")
