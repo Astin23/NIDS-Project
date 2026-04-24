@@ -263,7 +263,7 @@ def run_all():
     run_comparison()
     run_feature_importance()
     run_demo()
-    section("🎉  ALL STEPS COMPLETE!")
+    section("  ALL STEPS COMPLETE!")
     ok("Charts  → results/")
     ok("Database→ logs/nids.db")
     ok("Models  → models/")
@@ -327,7 +327,7 @@ def main():
         elif choice == "6": run_live(args.port)
         elif choice == "7": run_all()
         elif choice == "0":
-            print(f"\n{C.GREEN}  Thank you! 🎓{C.RESET}\n"); break
+            print(f"\n{C.GREEN}  Thank you! {C.RESET}\n"); break
         else:
             warn("Enter 0-7")
         input(f"\n  {C.BOLD}Press Enter to return to menu …{C.RESET}")
