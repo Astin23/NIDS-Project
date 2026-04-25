@@ -1,5 +1,4 @@
 """
-============================================================
   model_compare.py — Upgrade 2
   Compare 3 Unsupervised ML Algorithms:
     1. Isolation Forest
@@ -7,7 +6,6 @@
     3. Local Outlier Factor
   Shows side-by-side metrics + comparison chart
   Run: python model_compare.py
-============================================================
 """
  
 import os
