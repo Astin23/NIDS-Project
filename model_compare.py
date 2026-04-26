@@ -1,5 +1,5 @@
 """
-  model_compare.py — Upgrade 2
+  model_compare.py — Upgrade 
   Compare 3 Unsupervised ML Algorithms:
     1. Isolation Forest
     2. One-Class SVM
@@ -19,7 +19,5 @@ from sklearn.ensemble        import IsolationForest
 from sklearn.svm             import OneClassSVM
 from sklearn.neighbors       import LocalOutlierFactor
 from sklearn.preprocessing   import StandardScaler
-from sklearn.metrics         import (
-    precision_score, recall_score, f1_score, accuracy_score
-)
+
  
