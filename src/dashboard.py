@@ -295,4 +295,8 @@ def run_dashboard(alert_list, alert_lock, port=5000):
     import logging
     log = logging.getLogger("werkzeug")
     log.setLevel(logging.ERROR)
+<<<<<<< HEAD
  
+=======
+ 
+>>>>>>> 36d8bed850063b9fa21bc23d1717735e3dc60698

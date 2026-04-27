@@ -93,4 +93,7 @@ class AlertSystem:
         Send a CEF-formatted message to a SIEM collector.
         """
         pass    # TODO: implement for production use
+<<<<<<< HEAD
     
+=======
+>>>>>>> 36d8bed850063b9fa21bc23d1717735e3dc60698

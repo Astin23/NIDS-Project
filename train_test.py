@@ -1,10 +1,18 @@
 """
+<<<<<<< HEAD
   train_test.py — Upgrade 
+=======
+  train_test.py — Upgrade 1
+>>>>>>> 36d8bed850063b9fa21bc23d1717735e3dc60698
   Proper Train / Test Evaluation with Metrics
   Shows: Confusion Matrix, Precision, Recall, F1, Accuracy
   Run: python train_test.py
 """
+<<<<<<< HEAD
 
+=======
+ 
+>>>>>>> 36d8bed850063b9fa21bc23d1717735e3dc60698
 import os
 import sys
 import numpy as np
@@ -18,12 +26,21 @@ from sklearn.metrics import (
     precision_score, recall_score, f1_score,
     accuracy_score, confusion_matrix
 )
+<<<<<<< HEAD
 
 sys.path.insert(0, os.path.dirname(__file__))
 
 RESULTS_DIR = os.path.join(os.path.dirname(__file__), "results")
 os.makedirs(RESULTS_DIR, exist_ok=True)
 
+=======
+ 
+sys.path.insert(0, os.path.dirname(__file__))
+ 
+RESULTS_DIR = os.path.join(os.path.dirname(__file__), "results")
+os.makedirs(RESULTS_DIR, exist_ok=True)
+ 
+>>>>>>> 36d8bed850063b9fa21bc23d1717735e3dc60698
 # ── Colour palette for plots ───────────────────────────────────────────────────
 NAVY   = "#1B3A6B"
 BLUE   = "#2E75B6"
@@ -31,11 +48,19 @@ RED    = "#C00000"
 GREEN  = "#375623"
 ORANGE = "#E36C09"
 GRAY   = "#D9D9D9"
+<<<<<<< HEAD
 
 # ═══════════════════════════════════════════════════════════════════════════════
 #  DATA GENERATION
 # ═══════════════════════════════════════════════════════════════════════════════
 
+=======
+ 
+# ═══════════════════════════════════════════════════════════════════════════════
+#  DATA GENERATION
+# ═══════════════════════════════════════════════════════════════════════════════
+ 
+>>>>>>> 36d8bed850063b9fa21bc23d1717735e3dc60698
 def generate_normal_traffic(n=5000, seed=42):
     """
     Generates synthetic NORMAL traffic feature vectors.
@@ -62,8 +87,13 @@ def generate_normal_traffic(n=5000, seed=42):
         rows.append([pkt_size, proto, dst_port, rate, conn,
                      icmp, avg_sz, syn, ack, fin, rst, psh])
     return np.array(rows, dtype=float)
+<<<<<<< HEAD
 
 
+=======
+ 
+ 
+>>>>>>> 36d8bed850063b9fa21bc23d1717735e3dc60698
 def generate_attack_traffic(n=500, seed=99):
     """
     Generates synthetic ATTACK traffic for testing.
@@ -72,9 +102,15 @@ def generate_attack_traffic(n=500, seed=99):
     rng  = np.random.default_rng(seed)
     rows = []
     labels = []   # attack type name for each sample
+<<<<<<< HEAD
 
     per_attack = n // 5
 
+=======
+ 
+    per_attack = n // 5
+ 
+>>>>>>> 36d8bed850063b9fa21bc23d1717735e3dc60698
     # ── Port Scan: many unique ports, SYN only, tiny packets ─────────────────
     for _ in range(per_attack):
         rows.append([
@@ -86,7 +122,11 @@ def generate_attack_traffic(n=500, seed=99):
             0, 60, 1, 0, 0, 0, 0                 # SYN only
         ])
         labels.append("Port Scan")
+<<<<<<< HEAD
 
+=======
+ 
+>>>>>>> 36d8bed850063b9fa21bc23d1717735e3dc60698
     # ── Brute Force: high rate to single port, SYN flood ─────────────────────
     for _ in range(per_attack):
         rows.append([
@@ -100,7 +140,11 @@ def generate_attack_traffic(n=500, seed=99):
             1, 0, 0, 0, 0                         # SYN only
         ])
         labels.append("Brute Force")
+<<<<<<< HEAD
 
+=======
+ 
+>>>>>>> 36d8bed850063b9fa21bc23d1717735e3dc60698
     # ── ICMP Flood: massive ICMP count, large packets ─────────────────────────
     for _ in range(per_attack):
         rows.append([
@@ -114,7 +158,11 @@ def generate_attack_traffic(n=500, seed=99):
             0, 0, 0, 0, 0
         ])
         labels.append("ICMP Flood")
+<<<<<<< HEAD
 
+=======
+ 
+>>>>>>> 36d8bed850063b9fa21bc23d1717735e3dc60698
     # ── DDoS: extremely high packet rate ─────────────────────────────────────
     for _ in range(per_attack):
         rows.append([
@@ -128,7 +176,11 @@ def generate_attack_traffic(n=500, seed=99):
             1, 0, 0, 1, 0                         # SYN + RST
         ])
         labels.append("DDoS")
+<<<<<<< HEAD
 
+=======
+ 
+>>>>>>> 36d8bed850063b9fa21bc23d1717735e3dc60698
     # ── Unknown Anomaly: weird protocol + size combination ───────────────────
     for _ in range(per_attack):
         rows.append([
@@ -142,6 +194,7 @@ def generate_attack_traffic(n=500, seed=99):
             0, 1, 1, 1, 1                         # unusual flag combo
         ])
         labels.append("Unknown Anomaly")
+<<<<<<< HEAD
 
     return np.array(rows, dtype=float), labels
 
@@ -150,6 +203,16 @@ def generate_attack_traffic(n=500, seed=99):
 #  TRAINING
 # ═══════════════════════════════════════════════════════════════════════════════
 
+=======
+ 
+    return np.array(rows, dtype=float), labels
+ 
+ 
+# ═══════════════════════════════════════════════════════════════════════════════
+#  TRAINING
+# ═══════════════════════════════════════════════════════════════════════════════
+ 
+>>>>>>> 36d8bed850063b9fa21bc23d1717735e3dc60698
 def train_model(X_train):
     scaler = StandardScaler()
     X_scaled = scaler.fit_transform(X_train)
@@ -161,12 +224,21 @@ def train_model(X_train):
     )
     model.fit(X_scaled)
     return model, scaler
+<<<<<<< HEAD
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
 #  EVALUATION
 # ═══════════════════════════════════════════════════════════════════════════════
 
+=======
+ 
+ 
+# ═══════════════════════════════════════════════════════════════════════════════
+#  EVALUATION
+# ═══════════════════════════════════════════════════════════════════════════════
+ 
+>>>>>>> 36d8bed850063b9fa21bc23d1717735e3dc60698
 def evaluate(model, scaler, X_normal_test, X_attack_test):
     """
     Build combined test set, predict, compute all metrics.
@@ -174,6 +246,7 @@ def evaluate(model, scaler, X_normal_test, X_attack_test):
     """
     X_test  = np.vstack([X_normal_test, X_attack_test])
     y_true  = np.array([1]*len(X_normal_test) + [-1]*len(X_attack_test))
+<<<<<<< HEAD
 
     X_scaled   = scaler.transform(X_test)
     y_pred     = model.predict(X_scaled)       # 1=normal, -1=anomaly
@@ -182,21 +255,42 @@ def evaluate(model, scaler, X_normal_test, X_attack_test):
     return y_true, y_pred, scores
 
 
+=======
+ 
+    X_scaled   = scaler.transform(X_test)
+    y_pred     = model.predict(X_scaled)       # 1=normal, -1=anomaly
+    scores     = model.score_samples(X_scaled) # anomaly scores
+ 
+    return y_true, y_pred, scores
+ 
+ 
+>>>>>>> 36d8bed850063b9fa21bc23d1717735e3dc60698
 def compute_metrics(y_true, y_pred):
     # sklearn uses 1=positive class; our anomaly=-1
     # Flip so anomaly=1 (positive) for standard metrics
     yt = (y_true  == -1).astype(int)
     yp = (y_pred  == -1).astype(int)
+<<<<<<< HEAD
 
+=======
+ 
+>>>>>>> 36d8bed850063b9fa21bc23d1717735e3dc60698
     cm        = confusion_matrix(yt, yp)
     acc       = accuracy_score(yt, yp)
     prec      = precision_score(yt, yp, zero_division=0)
     rec       = recall_score(yt, yp, zero_division=0)
     f1        = f1_score(yt, yp, zero_division=0)
+<<<<<<< HEAD
 
     tn, fp, fn, tp = cm.ravel()
     fpr = fp / (fp + tn) if (fp + tn) > 0 else 0
 
+=======
+ 
+    tn, fp, fn, tp = cm.ravel()
+    fpr = fp / (fp + tn) if (fp + tn) > 0 else 0
+ 
+>>>>>>> 36d8bed850063b9fa21bc23d1717735e3dc60698
     return {
         "accuracy"   : round(acc  * 100, 2),
         "precision"  : round(prec * 100, 2),
@@ -209,32 +303,56 @@ def compute_metrics(y_true, y_pred):
         "fn"         : int(fn),
         "cm"         : cm,
     }
+<<<<<<< HEAD
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
 #  PLOTS
 # ═══════════════════════════════════════════════════════════════════════════════
 
+=======
+ 
+ 
+# ═══════════════════════════════════════════════════════════════════════════════
+#  PLOTS
+# ═══════════════════════════════════════════════════════════════════════════════
+ 
+>>>>>>> 36d8bed850063b9fa21bc23d1717735e3dc60698
 def plot_confusion_matrix(cm, path):
     fig, ax = plt.subplots(figsize=(6, 5))
     fig.patch.set_facecolor("#F8F9FA")
     ax.set_facecolor("#F8F9FA")
+<<<<<<< HEAD
 
     im = ax.imshow(cm, interpolation='nearest', cmap='Blues')
     plt.colorbar(im, ax=ax)
 
+=======
+ 
+    im = ax.imshow(cm, interpolation='nearest', cmap='Blues')
+    plt.colorbar(im, ax=ax)
+ 
+>>>>>>> 36d8bed850063b9fa21bc23d1717735e3dc60698
     classes = ['Normal', 'Attack']
     tick_marks = [0, 1]
     ax.set_xticks(tick_marks); ax.set_xticklabels(classes, fontsize=12)
     ax.set_yticks(tick_marks); ax.set_yticklabels(classes, fontsize=12)
+<<<<<<< HEAD
 
+=======
+ 
+>>>>>>> 36d8bed850063b9fa21bc23d1717735e3dc60698
     thresh = cm.max() / 2.0
     for i in range(2):
         for j in range(2):
             ax.text(j, i, format(cm[i, j], 'd'),
                     ha="center", va="center", fontsize=16, fontweight='bold',
                     color="white" if cm[i, j] > thresh else "black")
+<<<<<<< HEAD
 
+=======
+ 
+>>>>>>> 36d8bed850063b9fa21bc23d1717735e3dc60698
     ax.set_ylabel('Actual Label', fontsize=12, fontweight='bold')
     ax.set_xlabel('Predicted Label', fontsize=12, fontweight='bold')
     ax.set_title('Confusion Matrix — Isolation Forest', fontsize=14,
@@ -243,13 +361,19 @@ def plot_confusion_matrix(cm, path):
     plt.savefig(path, dpi=150, bbox_inches='tight')
     plt.close()
     print(f"  Saved: {path}")
+<<<<<<< HEAD
 
 
+=======
+ 
+ 
+>>>>>>> 36d8bed850063b9fa21bc23d1717735e3dc60698
 def plot_metrics_bar(metrics, path):
     labels = ['Accuracy', 'Precision', 'Recall', 'F1 Score']
     values = [metrics['accuracy'], metrics['precision'],
               metrics['recall'],   metrics['f1_score']]
     colors = [NAVY, BLUE, GREEN, ORANGE]
+<<<<<<< HEAD
 
     fig, ax = plt.subplots(figsize=(8, 5))
     fig.patch.set_facecolor("#F8F9FA")
@@ -258,11 +382,25 @@ def plot_metrics_bar(metrics, path):
     bars = ax.bar(labels, values, color=colors, width=0.5,
                   edgecolor='white', linewidth=1.5)
 
+=======
+ 
+    fig, ax = plt.subplots(figsize=(8, 5))
+    fig.patch.set_facecolor("#F8F9FA")
+    ax.set_facecolor("#F8F9FA")
+ 
+    bars = ax.bar(labels, values, color=colors, width=0.5,
+                  edgecolor='white', linewidth=1.5)
+ 
+>>>>>>> 36d8bed850063b9fa21bc23d1717735e3dc60698
     for bar, val in zip(bars, values):
         ax.text(bar.get_x() + bar.get_width()/2, bar.get_height() + 0.5,
                 f'{val:.1f}%', ha='center', va='bottom',
                 fontsize=13, fontweight='bold', color='#333333')
+<<<<<<< HEAD
 
+=======
+ 
+>>>>>>> 36d8bed850063b9fa21bc23d1717735e3dc60698
     ax.set_ylim(0, 110)
     ax.set_ylabel('Score (%)', fontsize=12, fontweight='bold')
     ax.set_title('Model Performance Metrics — Isolation Forest',
@@ -277,18 +415,31 @@ def plot_metrics_bar(metrics, path):
     plt.savefig(path, dpi=150, bbox_inches='tight')
     plt.close()
     print(f"  Saved: {path}")
+<<<<<<< HEAD
 
 
+=======
+ 
+ 
+>>>>>>> 36d8bed850063b9fa21bc23d1717735e3dc60698
 def plot_anomaly_scores(scores_normal, scores_attack, path):
     fig, ax = plt.subplots(figsize=(10, 5))
     fig.patch.set_facecolor("#F8F9FA")
     ax.set_facecolor("#F8F9FA")
+<<<<<<< HEAD
 
+=======
+ 
+>>>>>>> 36d8bed850063b9fa21bc23d1717735e3dc60698
     ax.hist(scores_normal, bins=40, alpha=0.7, color=BLUE,
             label='Normal Traffic', edgecolor='white')
     ax.hist(scores_attack, bins=40, alpha=0.7, color=RED,
             label='Attack Traffic', edgecolor='white')
+<<<<<<< HEAD
 
+=======
+ 
+>>>>>>> 36d8bed850063b9fa21bc23d1717735e3dc60698
     ax.axvline(x=-0.1, color='orange', linestyle='--',
                linewidth=2, label='Decision Threshold')
     ax.set_xlabel('Anomaly Score', fontsize=12, fontweight='bold')
@@ -303,19 +454,29 @@ def plot_anomaly_scores(scores_normal, scores_attack, path):
     plt.savefig(path, dpi=150, bbox_inches='tight')
     plt.close()
     print(f"  Saved: {path}")
+<<<<<<< HEAD
 
 
+=======
+ 
+ 
+>>>>>>> 36d8bed850063b9fa21bc23d1717735e3dc60698
 def plot_per_attack_detection(attack_labels, y_pred_attack, path):
     """Shows detection rate per attack type."""
     from collections import defaultdict
     attack_types = list(set(attack_labels))
     detected     = defaultdict(int)
     total        = defaultdict(int)
+<<<<<<< HEAD
 
+=======
+ 
+>>>>>>> 36d8bed850063b9fa21bc23d1717735e3dc60698
     for label, pred in zip(attack_labels, y_pred_attack):
         total[label] += 1
         if pred == -1:       # correctly detected as anomaly
             detected[label] += 1
+<<<<<<< HEAD
 
     rates  = [detected[t]/total[t]*100 for t in attack_types]
     colors = [NAVY, BLUE, GREEN, ORANGE, RED]
@@ -327,11 +488,28 @@ def plot_per_attack_detection(attack_labels, y_pred_attack, path):
     bars = ax.bar(attack_types, rates, color=colors[:len(attack_types)],
                   width=0.5, edgecolor='white', linewidth=1.5)
 
+=======
+ 
+    rates  = [detected[t]/total[t]*100 for t in attack_types]
+    colors = [NAVY, BLUE, GREEN, ORANGE, RED]
+ 
+    fig, ax = plt.subplots(figsize=(10, 5))
+    fig.patch.set_facecolor("#F8F9FA")
+    ax.set_facecolor("#F8F9FA")
+ 
+    bars = ax.bar(attack_types, rates, color=colors[:len(attack_types)],
+                  width=0.5, edgecolor='white', linewidth=1.5)
+ 
+>>>>>>> 36d8bed850063b9fa21bc23d1717735e3dc60698
     for bar, rate in zip(bars, rates):
         ax.text(bar.get_x() + bar.get_width()/2, bar.get_height() + 0.5,
                 f'{rate:.1f}%', ha='center', va='bottom',
                 fontsize=12, fontweight='bold')
+<<<<<<< HEAD
 
+=======
+ 
+>>>>>>> 36d8bed850063b9fa21bc23d1717735e3dc60698
     ax.set_ylim(0, 115)
     ax.set_ylabel('Detection Rate (%)', fontsize=12, fontweight='bold')
     ax.set_title('Attack Detection Rate by Attack Type',
@@ -346,50 +524,90 @@ def plot_per_attack_detection(attack_labels, y_pred_attack, path):
     plt.savefig(path, dpi=150, bbox_inches='tight')
     plt.close()
     print(f"  Saved: {path}")
+<<<<<<< HEAD
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
 #  MAIN
 # ═══════════════════════════════════════════════════════════════════════════════
 
+=======
+ 
+ 
+# ═══════════════════════════════════════════════════════════════════════════════
+#  MAIN
+# ═══════════════════════════════════════════════════════════════════════════════
+ 
+>>>>>>> 36d8bed850063b9fa21bc23d1717735e3dc60698
 def main():
     print("=" * 60)
     print("  NIDS — Train / Test Evaluation  (Upgrade 1)")
     print("=" * 60)
+<<<<<<< HEAD
 
+=======
+ 
+>>>>>>> 36d8bed850063b9fa21bc23d1717735e3dc60698
     # ── 1. Generate data ───────────────────────────────────────────────────────
     print("\n[1/5] Generating training data (5000 normal samples) …")
     X_all_normal   = generate_normal_traffic(n=6000, seed=42)
     X_train        = X_all_normal[:5000]     # 5000 for training
     X_normal_test  = X_all_normal[5000:]     # 1000 for testing
+<<<<<<< HEAD
 
     print("[1/5] Generating attack test data (500 attack samples) …")
     X_attack_test, attack_labels = generate_attack_traffic(n=500, seed=99)
 
+=======
+ 
+    print("[1/5] Generating attack test data (500 attack samples) …")
+    X_attack_test, attack_labels = generate_attack_traffic(n=500, seed=99)
+ 
+>>>>>>> 36d8bed850063b9fa21bc23d1717735e3dc60698
     print(f"  Training  : {len(X_train)} normal samples")
     print(f"  Test Normal: {len(X_normal_test)} samples")
     print(f"  Test Attack: {len(X_attack_test)} samples")
     print(f"  Attack types: {set(attack_labels)}")
+<<<<<<< HEAD
 
+=======
+ 
+>>>>>>> 36d8bed850063b9fa21bc23d1717735e3dc60698
     # ── 2. Train ───────────────────────────────────────────────────────────────
     print("\n[2/5] Training Isolation Forest …")
     model, scaler = train_model(X_train)
     print("  Training complete!")
+<<<<<<< HEAD
 
+=======
+ 
+>>>>>>> 36d8bed850063b9fa21bc23d1717735e3dc60698
     # ── 3. Evaluate ───────────────────────────────────────────────────────────
     print("\n[3/5] Evaluating on test set …")
     y_true, y_pred, scores = evaluate(model, scaler, X_normal_test, X_attack_test)
     metrics = compute_metrics(y_true, y_pred)
+<<<<<<< HEAD
 
+=======
+ 
+>>>>>>> 36d8bed850063b9fa21bc23d1717735e3dc60698
     # Separate scores for plotting
     n_normal = len(X_normal_test)
     scores_normal = scores[:n_normal]
     scores_attack = scores[n_normal:]
+<<<<<<< HEAD
 
     # Predictions on attack samples only (for per-type chart)
     X_attack_scaled = scaler.transform(X_attack_test)
     y_pred_attack   = model.predict(X_attack_scaled)
 
+=======
+ 
+    # Predictions on attack samples only (for per-type chart)
+    X_attack_scaled = scaler.transform(X_attack_test)
+    y_pred_attack   = model.predict(X_attack_scaled)
+ 
+>>>>>>> 36d8bed850063b9fa21bc23d1717735e3dc60698
     # ── 4. Print results ───────────────────────────────────────────────────────
     print("\n[4/5] Results:")
     print("─" * 50)
@@ -404,7 +622,11 @@ def main():
     print(f"  F1 Score   : {metrics['f1_score']}%")
     print(f"  False +ve Rate: {metrics['fpr']}%")
     print("─" * 50)
+<<<<<<< HEAD
 
+=======
+ 
+>>>>>>> 36d8bed850063b9fa21bc23d1717735e3dc60698
     # ── 5. Save plots ──────────────────────────────────────────────────────────
     print("\n[5/5] Saving evaluation plots …")
     plot_confusion_matrix(
@@ -423,14 +645,28 @@ def main():
         attack_labels, y_pred_attack,
         os.path.join(RESULTS_DIR, "per_attack_detection_rate.png")
     )
+<<<<<<< HEAD
 
+=======
+ 
+>>>>>>> 36d8bed850063b9fa21bc23d1717735e3dc60698
     print(f"\n All results saved to: {RESULTS_DIR}/")
     print("=" * 60)
     print("  Evaluation Complete!")
     print("=" * 60)
+<<<<<<< HEAD
 
     return metrics
 
 
 if __name__ == "__main__":
     main()
+=======
+ 
+    return metrics
+ 
+ 
+if __name__ == "__main__":
+    main()
+ 
+>>>>>>> 36d8bed850063b9fa21bc23d1717735e3dc60698

@@ -1,8 +1,6 @@
 """
-============================================================
   HYBRID AI-ENHANCED NETWORK INTRUSION DETECTION SYSTEM
-  Mid-Semester Demo Script
-  demo_midsem.py
+  Mid-Semester Demo Presenting
 
   Demonstrates:
     1. Packet Capture (Simulated)
@@ -14,10 +12,7 @@
        - Suspicious Port Access
     4. Alert System with Severity Levels
     5. Logging to SQLite Database
-
-  Run: python demo_midsem.py
   No root, no Scapy, no network required.
-============================================================
 """
 
 import time
@@ -99,14 +94,14 @@ def dispatch_alert(conn, attack_type, src_ip, dst_ip, port, severity, detail):
     ts = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 
     print(f"\n{colour}{BOLD}{'='*60}{RESET}")
-    print(f"{colour}{BOLD}  🚨 ALERT #{alert_count}  |  [{severity}]  |  {attack_type}{RESET}")
+    print(f"{colour}{BOLD}   ALERT #{alert_count}  |  [{severity}]  |  {attack_type}{RESET}")
     print(f"{colour}{'='*60}{RESET}")
-    print(f"{WHITE}  📌 Attack Type : {BOLD}{attack_type}{RESET}")
-    print(f"{WHITE}  🌐 Source IP   : {BOLD}{src_ip}{RESET}")
-    print(f"{WHITE}  🎯 Target IP   : {BOLD}{dst_ip}:{port}{RESET}")
-    print(f"{WHITE}  ⏰ Timestamp   : {ts}{RESET}")
-    print(f"{WHITE}  📋 Detail      : {detail}{RESET}")
-    print(f"{colour}  ⚠️  Severity    : {BOLD}{severity}{RESET}")
+    print(f"{WHITE}   Attack Type : {BOLD}{attack_type}{RESET}")
+    print(f"{WHITE}   Source IP   : {BOLD}{src_ip}{RESET}")
+    print(f"{WHITE}   Target IP   : {BOLD}{dst_ip}:{port}{RESET}")
+    print(f"{WHITE}   Timestamp   : {ts}{RESET}")
+    print(f"{WHITE}   Detail      : {detail}{RESET}")
+    print(f"{colour}    Severity    : {BOLD}{severity}{RESET}")
     print(f"{colour}{'─'*60}{RESET}")
 
     alert = {
@@ -119,7 +114,7 @@ def dispatch_alert(conn, attack_type, src_ip, dst_ip, port, severity, detail):
         "detail":     detail,
     }
     log_to_db(conn, alert)
-    print(f"{GREEN}  ✅ Alert saved to database: logs/nids_midsem.db{RESET}")
+    print(f"{GREEN}   Alert saved to database: logs/nids_midsem.db{RESET}")
 
 # ── Rule 1 — Port Scan ─────────────────────────────────────────────────────────
 def check_port_scan(conn, src_ip, dst_ip, dst_port):
@@ -268,7 +263,7 @@ def main():
     # ── Welcome banner ─────────────────────────────────────────────────────────
     print(f"\n{CYAN}{BOLD}")
     print("=" * 60)
-    print("   🛡️   HYBRID AI-ENHANCED NIDS   🛡️")
+    print("      HYBRID AI-ENHANCED NIDS   ")
     print("        Mid-Semester Demonstration")
     print("        Rule-Based Detection Engine")
     print("=" * 60)
@@ -278,15 +273,15 @@ def main():
     # ── System info ────────────────────────────────────────────────────────────
     print(f"{WHITE}{BOLD}  SYSTEM INITIALISING ...{RESET}\n")
     time.sleep(0.5)
-    print(f"{GREEN}  ✅ Packet Capture Engine     — READY (Simulation Mode){RESET}")
+    print(f"{GREEN}   Packet Capture Engine     — READY (Simulation Mode){RESET}")
     time.sleep(0.3)
-    print(f"{GREEN}  ✅ Feature Extraction Layer  — READY{RESET}")
+    print(f"{GREEN}   Feature Extraction Layer  — READY{RESET}")
     time.sleep(0.3)
-    print(f"{GREEN}  ✅ Rule-Based Detection      — READY (4 Rules Active){RESET}")
+    print(f"{GREEN}   Rule-Based Detection      — READY (4 Rules Active){RESET}")
     time.sleep(0.3)
-    print(f"{GREEN}  ✅ Alert System              — READY{RESET}")
+    print(f"{GREEN}   Alert System              — READY{RESET}")
     time.sleep(0.3)
-    print(f"{GREEN}  ✅ SQLite Logger             — READY (logs/nids_logs.db){RESET}")
+    print(f"{GREEN}   SQLite Logger             — READY (logs/nids_logs.db){RESET}")
     time.sleep(0.3)
 
     print(f"\n{CYAN}{BOLD}  Active Detection Rules:{RESET}")
@@ -311,7 +306,7 @@ def main():
         print_packet_info(pkt, i)
         time.sleep(0.3)
 
-    print(f"\n{GREEN}  ✅ No alerts — Traffic is normal.{RESET}")
+    print(f"\n{GREEN}   No alerts — Traffic is normal.{RESET}")
     time.sleep(1)
 
     # ══════════════════════════════════════════════════════════════════════════
@@ -429,7 +424,7 @@ def main():
 
     print(f"\n{CYAN}{BOLD}")
     print("=" * 60)
-    print("   📊  DEMO SUMMARY")
+    print("  Mid DEMO SUMMARY ")
     print("=" * 60 + RESET)
     print(f"\n{WHITE}  Total Alerts Generated : {BOLD}{alert_count}{RESET}")
     print(f"{WHITE}  Saved to Database      : {BOLD}{total} records in logs/nids_demo.db{RESET}\n")
@@ -442,14 +437,14 @@ def main():
         print(f"  {c}{BOLD}  {severity:<10}{RESET} {c}{bar} ({count}){RESET}")
 
     print(f"\n{WHITE}  What was demonstrated:{RESET}")
-    print(f"{GREEN}  ✅ Rule 1 — Port Scan Detection       triggered{RESET}")
-    print(f"{GREEN}  ✅ Rule 2 — Brute Force Detection     triggered{RESET}")
-    print(f"{GREEN}  ✅ Rule 3 — ICMP Flood Detection      triggered{RESET}")
-    print(f"{GREEN}  ✅ Rule 4 — Suspicious Port Access    triggered{RESET}")
+    print(f"{GREEN}   Rule 1 — Port Scan Detection       triggered{RESET}")
+    print(f"{GREEN}   Rule 2 — Brute Force Detection     triggered{RESET}")
+    print(f"{GREEN}   Rule 3 — ICMP Flood Detection      triggered{RESET}")
+    print(f"{GREEN}   Rule 4 — Suspicious Port Access    triggered{RESET}")
 
     print(f"\n{CYAN}{BOLD}")
     print("=" * 60)
-    print("  Demo Complete 🎯")
+    print("  Demo Complete ")
     print("=" * 60)
     print(RESET)
 
