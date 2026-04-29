@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-=======
-
->>>>>>> 36d8bed850063b9fa21bc23d1717735e3dc60698
 """
   run.py — MASTER RUNNER
   Hybrid AI-Enhanced NIDS — Complete Project
@@ -337,7 +333,4 @@ def main():
 
 if __name__ == "__main__":
     main()
-<<<<<<< HEAD
     
-=======
->>>>>>> 36d8bed850063b9fa21bc23d1717735e3dc60698
