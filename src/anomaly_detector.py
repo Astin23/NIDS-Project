@@ -186,8 +186,4 @@ class AnomalyDetector:
                 with open(SCALER_PATH, "rb") as f: self.scaler = pickle.load(f)
                 print("[AnomalyDetector] Pre-trained model loaded from disk.")
             except Exception as e:
-<<<<<<< HEAD
                  print(f"[AnomalyDetector] Could not load model: {e}")
-=======
-                print(f"[AnomalyDetector] Could not load model: {e}")
->>>>>>> 36d8bed850063b9fa21bc23d1717735e3dc60698
