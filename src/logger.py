@@ -167,7 +167,4 @@ class Logger:
     def close(self):
         self._conn.close()
         print("[Logger] Database connection closed.")
-<<<<<<< HEAD
     
-=======
->>>>>>> 36d8bed850063b9fa21bc23d1717735e3dc60698
