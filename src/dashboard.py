@@ -138,7 +138,7 @@ DASHBOARD_HTML = """
   <span id="last-update">Initialising …</span>
   <button class="ai-btn" onclick="genReport()" id="reportBtn">
     <div class="spinner" id="spin"></div>
-    <span id="btnTxt">🤖 Generate AI Report</span>
+    <span id="btnTxt"> Generate AI Report</span>
   </button>
 </header>
 
@@ -187,13 +187,13 @@ DASHBOARD_HTML = """
 <div class="overlay" id="modal">
   <div class="modal">
     <div class="modal-hdr">
-      <h2>🤖 AI-Generated Security Incident Report</h2>
+      <h2> AI-Generated Security Incident Report</h2>
       <button class="modal-close" onclick="closeModal()">✕</button>
     </div>
     <div class="modal-body" id="modalBody"></div>
     <div class="modal-foot" id="modalFoot" style="display:none">
-      <button class="btn btn-copy"  onclick="copyRpt()">📋 Copy</button>
-      <button class="btn btn-print" onclick="printRpt()">🖨️ Print / Save PDF</button>
+      <button class="btn btn-copy"  onclick="copyRpt()"> Copy</button>
+      <button class="btn btn-print" onclick="printRpt()"> Print / Save PDF</button>
     </div>
   </div>
 </div>
@@ -285,7 +285,7 @@ async function genReport(){
   mf.style.display='none';
   mb.innerHTML=`<div class="loading">
     <div class="loading-ring"></div>
-    <p>🤖 AI is analysing your network security data…</p>
+    <p> AI is analysing your network security data…</p>
     <p style="font-size:0.8rem;color:#6e40c9;margin-top:-10px">
       Reading alerts → Building threat model → Writing report
     </p></div>`;
@@ -297,24 +297,24 @@ async function genReport(){
     const d = await r.json();
     if(d.error){
       mb.innerHTML=`<div style="color:#ff7b72;padding:20px">
-        <h3>⚠️ ${d.error}</h3></div>`;
+        <h3> ${d.error}</h3></div>`;
     } else {
       rptTxt = d.report;
       mb.innerHTML=`
         <div class="report-meta">
-          🕒 Generated: ${new Date().toLocaleString()} &nbsp;|&nbsp;
-          🤖 Powered by Claude AI &nbsp;|&nbsp;
-          📊 Based on ${d.alert_count} alerts
+           Generated: ${new Date().toLocaleString()} &nbsp;|&nbsp;
+           Powered by Claude AI &nbsp;|&nbsp;
+           Based on ${d.alert_count} alerts
         </div>
         <div class="report">${md2html(d.report)}</div>`;
       mf.style.display='flex';
     }
   } catch(e){
     mb.innerHTML=`<div style="color:#ff7b72;padding:20px">
-      <h3>⚠️ Error: ${e.message}</h3></div>`;
+      <h3> Error: ${e.message}</h3></div>`;
   } finally {
     btn.disabled=false; sp.style.display='none';
-    bt.textContent='🤖 Generate AI Report';
+    bt.textContent=' Generate AI Report';
   }
 }
 
@@ -339,8 +339,8 @@ document.getElementById('modal').addEventListener('click',
 async function copyRpt(){
   await navigator.clipboard.writeText(rptTxt);
   const b=document.querySelector('.btn-copy');
-  b.textContent='✅ Copied!';
-  setTimeout(()=>b.textContent='📋 Copy',2000);
+  b.textContent=' Copied!';
+  setTimeout(()=>b.textContent=' Copy',2000);
 }
 
 function printRpt(){
@@ -351,7 +351,7 @@ function printRpt(){
     padding-bottom:10px;}h2{color:#2E75B6;margin-top:20px;}
     .meta{background:#f5f5f5;padding:10px;border-radius:6px;
     font-size:0.85rem;color:#666;margin-bottom:20px;}</style></head><body>
-    <h1>🛡️ Network Security Incident Report</h1>
+    <h1> Network Security Incident Report</h1>
     <div class="meta">Generated: ${new Date().toLocaleString()} | Hybrid AI-Enhanced NIDS</div>
     ${md2html(rptTxt)}</body></html>`);
   w.document.close(); w.print();
