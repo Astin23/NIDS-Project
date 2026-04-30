@@ -1,5 +1,5 @@
 """
-  src/dashboard.py  
+  src/dashboard.py  (Upgraded with AI Report Generator)
   Module 8 — Visualization Dashboard
   NEW: AI Report button calls Claude API to auto-generate
        a professional security incident report.
@@ -8,13 +8,12 @@
 import os
 import threading
 from datetime import datetime
-from flask import Flask, jsonify, render_template_string # type: ignore
+from flask import Flask, jsonify, render_template_string
 
 
-DASHBOARD_HTML = """
+DASHBOARD_HTML = r"""
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -485,3 +484,4 @@ def run_dashboard(alert_list, alert_lock, port=5000):
     import logging
     logging.getLogger("werkzeug").setLevel(logging.ERROR)
     app.run(host="0.0.0.0", port=port, threaded=True)
+    
