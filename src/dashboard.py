@@ -1,5 +1,5 @@
 """
-  src/dashboard.py  (Upgraded with AI Report Generator)
+  src/dashboard.py  
   Module 8 — Visualization Dashboard
   NEW: AI Report button calls Claude API to auto-generate
        a professional security incident report.
@@ -8,7 +8,7 @@
 import os
 import threading
 from datetime import datetime
-from flask import Flask, jsonify, render_template_string # type: ignore
+from flask import Flask, jsonify, render_template_string
 
 
 DASHBOARD_HTML = """
@@ -365,6 +365,7 @@ function printRpt(){
 def run_dashboard(alert_list, alert_lock, port=5000):
     from src.logger      import Logger
     from src.ai_reporter import generate_report
+    from collections import defaultdict
 
     db  = Logger()
     app = Flask(__name__, static_folder=None)
@@ -376,19 +377,51 @@ def run_dashboard(alert_list, alert_lock, port=5000):
 
     @app.route("/api/stats")
     def api_stats():
-        stats = db.get_stats()
+        # Primary: use in-memory alert_list for instant updates
         with alert_lock:
-            stats["ml_count"] = sum(
-                1 for a in alert_list if a.get("source") == "ML")
-        return jsonify(stats)
+            alerts = list(alert_list)
+        total    = len(alerts)
+        critical = sum(1 for a in alerts if a.get("severity") == "CRITICAL")
+        ml_count = sum(1 for a in alerts if a.get("source") == "ML")
+        unique_ips = len(set(a.get("source_ip","") for a in alerts))
+        # Fallback to DB if memory is empty
+        if total == 0:
+            db_stats = db.get_stats()
+            db_stats["ml_count"] = 0
+            return jsonify(db_stats)
+        return jsonify({
+            "total": total,
+            "critical": critical,
+            "unique_attacker_ips": unique_ips,
+            "ml_count": ml_count
+        })
 
     @app.route("/api/distribution")
     def api_distribution():
-        return jsonify(db.get_attack_distribution())
+        # Primary: compute from in-memory alert_list
+        with alert_lock:
+            alerts = list(alert_list)
+        if not alerts:
+            return jsonify(db.get_attack_distribution())
+        counts = defaultdict(int)
+        for a in alerts:
+            counts[a.get("attack_type", "Unknown")] += 1
+        return jsonify([{"attack_type": k, "count": v}
+                        for k, v in sorted(counts.items(),
+                                           key=lambda x: -x[1])])
 
     @app.route("/api/top_attackers")
     def api_top_attackers():
-        return jsonify(db.get_top_attackers(10))
+        # Primary: compute from in-memory alert_list
+        with alert_lock:
+            alerts = list(alert_list)
+        if not alerts:
+            return jsonify(db.get_top_attackers(10))
+        counts = defaultdict(int)
+        for a in alerts:
+            counts[a.get("source_ip", "Unknown")] += 1
+        top = sorted(counts.items(), key=lambda x: -x[1])[:10]
+        return jsonify([{"ip": k, "count": v} for k, v in top])
 
     @app.route("/api/timeline")
     def api_timeline():
@@ -396,7 +429,27 @@ def run_dashboard(alert_list, alert_lock, port=5000):
 
     @app.route("/api/recent")
     def api_recent():
-        return jsonify(db.get_recent_alerts(100))
+        # Primary: serve directly from in-memory for zero-lag updates
+        with alert_lock:
+            alerts = list(reversed(alert_list))[:100]
+        if not alerts:
+            return jsonify(db.get_recent_alerts(100))
+        # Add id field for table rendering
+        result = []
+        for i, a in enumerate(alerts):
+            result.append({
+                "id"            : len(alert_list) - i,
+                "timestamp"     : a.get("timestamp", ""),
+                "source_ip"     : a.get("source_ip", ""),
+                "destination_ip": a.get("destination_ip", ""),
+                "protocol"      : a.get("protocol", "TCP"),
+                "port"          : a.get("port", 0),
+                "attack_type"   : a.get("attack_type", ""),
+                "severity"      : a.get("severity", "LOW"),
+                "source"        : a.get("source", "RULE"),
+                "detail"        : a.get("detail", ""),
+            })
+        return jsonify(result)
 
     # ── AI Report Endpoint ────────────────────────────────────────────────────
     @app.route("/api/ai_report", methods=["POST"])

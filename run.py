@@ -11,7 +11,6 @@
     python run.py --compare  → Compare 3 ML algorithms
     python run.py --features → Feature importance analysis
     python run.py --live     → Full live system + dashboard
-    python run.py --all      → Run EVERYTHING in sequence
 """
 
 import os
@@ -262,7 +261,7 @@ def run_all():
     run_comparison()
     run_feature_importance()
     run_demo()
-    section("  ALL STEPS COMPLETE!")
+    section("🎉  ALL STEPS COMPLETE!")
     ok("Charts  → results/")
     ok("Database→ logs/nids.db")
     ok("Models  → models/")
@@ -326,11 +325,10 @@ def main():
         elif choice == "6": run_live(args.port)
         elif choice == "7": run_all()
         elif choice == "0":
-            print(f"\n{C.GREEN}  Thank you! {C.RESET}\n"); break
+            print(f"\n{C.GREEN}  Good luck for your viva bro! 🎓{C.RESET}\n"); break
         else:
             warn("Enter 0-7")
         input(f"\n  {C.BOLD}Press Enter to return to menu …{C.RESET}")
 
 if __name__ == "__main__":
     main()
-    

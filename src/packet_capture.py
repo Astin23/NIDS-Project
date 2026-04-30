@@ -10,6 +10,8 @@ import random
 import threading
 from datetime import datetime
 
+# Scapy is imported lazily so the rest of the system
+# still runs in simulation mode without it installed.
 try:
     from scapy.all import sniff, IP, TCP, UDP, ICMP
     SCAPY_AVAILABLE = True
@@ -97,36 +99,33 @@ class PacketCaptureEngine:
     # ── Simulation mode ────────────────────────────────────────────────────────
     def _run_simulation(self):
         """
-        Generates synthetic packets at ~10/sec mixing:
-          • Normal HTTP/HTTPS traffic   (70 %)
-          • Port scan attempts          (10 %)
-          • Brute-force SSH             (10 %)
-          • ICMP flood bursts           ( 5 %)
-          • DDoS simulation             ( 5 %)
+        Generates synthetic packets at ~50/sec:
+          • Normal HTTP/HTTPS traffic   (40%)
+          • Port scan attempts          (20%) <- higher for fast alerts
+          • Brute-force SSH             (20%) <- higher for fast alerts
+          • ICMP flood bursts           (10%) <- higher for fast alerts
+          • DDoS simulation             (10%) <- higher for fast alerts
+        Sends 5 packets per 0.1s = 50 pkt/sec.
+        Dashboard fills in ~10-15 seconds.
         """
-        print("[PacketCapture] Running in SIMULATION mode …")
+        print("[PacketCapture] Running in SIMULATION mode ...")
+        print("[PacketCapture] 50 pkt/sec -> dashboard fills in ~10 sec")
         normal_ips   = [f"192.168.1.{i}" for i in range(10, 30)]
         attacker_ips = ["10.0.0.1", "172.16.0.5", "203.0.113.42"]
         server_ip    = "192.168.1.1"
 
         while True:
-            roll = random.random()
-
-            if roll < 0.70:                         # Normal traffic
-                raw = self._sim_normal(normal_ips, server_ip)
-            elif roll < 0.80:                       # Port scan
-                raw = self._sim_port_scan(attacker_ips, server_ip)
-            elif roll < 0.90:                       # Brute-force SSH
-                raw = self._sim_brute_force(attacker_ips, server_ip)
-            elif roll < 0.95:                       # ICMP flood
-                raw = self._sim_icmp_flood(attacker_ips, server_ip)
-            else:                                   # DDoS burst
-                raw = self._sim_ddos(attacker_ips, server_ip)
-
-            features = self.extractor.extract(raw)
-            self._enqueue(features)
-            self.packet_count += 1
-            time.sleep(0.1)                         # ~10 packets / sec
+            for _ in range(5):
+                roll = random.random()
+                if   roll < 0.40: raw = self._sim_normal(normal_ips, server_ip)
+                elif roll < 0.60: raw = self._sim_port_scan(attacker_ips, server_ip)
+                elif roll < 0.80: raw = self._sim_brute_force(attacker_ips, server_ip)
+                elif roll < 0.90: raw = self._sim_icmp_flood(attacker_ips, server_ip)
+                else:             raw = self._sim_ddos(attacker_ips, server_ip)
+                features = self.extractor.extract(raw)
+                self._enqueue(features)
+                self.packet_count += 1
+            time.sleep(0.1)
 
     # ── Simulation helpers ─────────────────────────────────────────────────────
     @staticmethod
