@@ -8,7 +8,7 @@
 import os
 import threading
 from datetime import datetime
-from flask import Flask, jsonify, render_template_string
+from flask import Flask, jsonify, render_template_string # pyright: ignore[reportMissingImports]
 
 
 DASHBOARD_HTML = r"""
@@ -303,7 +303,6 @@ async function genReport(){
       mb.innerHTML=`
         <div class="report-meta">
            Generated: ${new Date().toLocaleString()} &nbsp;|&nbsp;
-           Powered by Claude AI &nbsp;|&nbsp;
            Based on ${d.alert_count} alerts
         </div>
         <div class="report">${md2html(d.report)}</div>`;
